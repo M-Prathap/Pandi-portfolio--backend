@@ -2,10 +2,10 @@
   "admins": [
     {
       "email": "admin@para.studio",
-      "passwordHash": "$2b$10$A1RAqT/P.D1CfAfOfEUAoeOQ2mwLdp7Ja5rJN85UmjZHjz53B8xT6",
+      "passwordHash": "$2b$10$w96ddj1KNB4XbTrExX9a5OHnk2KzSt0texufm1BJl1j13iubx0q1O",
       "_id": "b2dbcb4d2c5a25e3a851a596",
       "createdAt": "2026-10-14T13:26:56.388Z",
-      "updatedAt": "2026-10-14T14:43:16.448Z"
+      "updatedAt": "2026-10-14T20:15:50.492Z"
     }
   ],
   "settings": [
@@ -67,5 +67,58 @@
       "updatedAt": "2026-10-14T13:26:56.390Z"
     }
   ],
-  "projects": []
+  "projects": [
+    {
+      "title": "yfuy",
+      "client": "",
+      "description": "",
+      "category": null,
+      "thumbnail": "/uploads/1792004886979-profile_photo.webp",
+      "images": [
+        {
+          "url": "/uploads/1792004886979-profile_photo.webp",
+          "type": "image",
+          "order": 0
+        },
+        {
+          "url": "/uploads/1792004888347-profile_photo.webp",
+          "type": "image",
+          "order": 1
+        }
+      ],
+      "tools": [],
+      "tags": [],
+      "projectUrl": "",
+      "videoUrl": "",
+      "layout": "item",
+      "order": 0,
+      "isVisible": true,
+      "status": "published",
+      "_id": "1c1aa65627a238c7b822ac38",
+      "createdAt": "2026-10-14T19:08:07.051Z",
+      "updatedAt": "2026-10-14T19:08:10.857Z"
+    }
+  ],
+  "media": [
+    {
+      "url": "/uploads/1792004886979-profile_photo.webp",
+      "filename": "1792004886979-profile_photo.webp",
+      "mimeType": "image/webp",
+      "size": 16910,
+      "provider": "local",
+      "_id": "2f416aec6665ff082e322d61",
+      "createdAt": "2026-10-14T19:08:07.001Z",
+      "updatedAt": "2026-10-14T19:08:07.001Z"
+    },
+    {
+      "url": "/uploads/1792004888347-profile_photo.webp",
+      "filename": "1792004888347-profile_photo.webp",
+      "mimeType": "image/webp",
+      "size": 16910,
+      "provider": "local",
+      "_id": "64cb64da13e7b6a811c488ea",
+      "createdAt": "2026-10-14T19:08:08.350Z",
+      "updatedAt": "2026-10-14T19:08:08.350Z"
+    }
+  ]
 }
