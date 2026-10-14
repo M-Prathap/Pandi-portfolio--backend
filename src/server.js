@@ -5,8 +5,10 @@ import morgan from 'morgan';
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import mongoose from 'mongoose';
 import { env } from './config/env.js';
 import { connectDB } from './config/db.js';
+import { useFileDb } from './config/dbMode.js';
 import { configureCloudinary, isCloudinaryEnabled } from './config/cloudinary.js';
 import apiRoutes from './routes/index.js';
 import { notFound, errorHandler } from './middleware/errorHandler.js';
@@ -23,20 +25,16 @@ function parseOrigins(value) {
 }
 
 async function start() {
-  await connectDB(env.mongoUri);
-  await ensureSeedData();
-  console.log(`Admin: ${env.adminEmail}`);
+  const app = express();
+  const allowedOrigins = parseOrigins(env.clientOrigin);
+  if (process.env.RENDER_EXTERNAL_URL) {
+    allowedOrigins.push(process.env.RENDER_EXTERNAL_URL.replace(/\/$/, ''));
+  }
 
   if (configureCloudinary()) {
     console.log('Cloudinary uploads enabled');
   } else {
     console.log('Local disk uploads (set CLOUDINARY_* for production persistence)');
-  }
-
-  const app = express();
-  const allowedOrigins = parseOrigins(env.clientOrigin);
-  if (process.env.RENDER_EXTERNAL_URL) {
-    allowedOrigins.push(process.env.RENDER_EXTERNAL_URL.replace(/\/$/, ''));
   }
 
   app.use(
@@ -53,7 +51,8 @@ async function start() {
           env.nodeEnv !== 'production' ||
           allowedOrigins.includes('*') ||
           allowedOrigins.includes(origin) ||
-          /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
+          /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin) ||
+          /^https:\/\/pandi-frontend.*\.vercel\.app$/.test(origin)
         ) {
           return cb(null, true);
         }
@@ -67,6 +66,18 @@ async function start() {
   app.use(morgan(env.nodeEnv === 'production' ? 'combined' : 'dev'));
   app.use(express.json({ limit: '2mb' }));
   app.use(express.urlencoded({ extended: true }));
+
+  // Return informative 503 instead of crashing or hanging if database is not connected
+  app.use('/api', (req, res, next) => {
+    if (req.path === '/health') return next();
+    if (!useFileDb() && mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database not connected. Please verify MONGODB_URI in Render dashboard.',
+      });
+    }
+    next();
+  });
 
   app.use('/uploads', express.static(uploadsDir));
   app.use('/api', apiRoutes);
@@ -104,6 +115,18 @@ async function start() {
     console.error('Server error', err);
     process.exit(1);
   });
+
+  // Connect to database without crashing the web service
+  connectDB(env.mongoUri)
+    .then(async () => {
+      await ensureSeedData();
+      console.log(`Admin ready: ${env.adminEmail}`);
+    })
+    .catch((err) => {
+      console.error('\n⚠️ DATABASE CONNECTION FAILED (Web service kept ONLINE for Render):');
+      console.error(err.message);
+      console.error('👉 Please update MONGODB_URI in Render Environment Variables with your Atlas password.\n');
+    });
 }
 
 start().catch((err) => {
