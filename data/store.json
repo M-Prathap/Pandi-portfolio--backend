@@ -1,0 +1,71 @@
+{
+  "admins": [
+    {
+      "email": "admin@para.studio",
+      "passwordHash": "$2b$10$A1RAqT/P.D1CfAfOfEUAoeOQ2mwLdp7Ja5rJN85UmjZHjz53B8xT6",
+      "_id": "b2dbcb4d2c5a25e3a851a596",
+      "createdAt": "2026-10-14T13:26:56.388Z",
+      "updatedAt": "2026-10-14T14:43:16.448Z"
+    }
+  ],
+  "settings": [
+    {
+      "brandName": "PARA",
+      "brandSecondary": "Creative Origin",
+      "tagline": "Packaging & Branding Studio",
+      "footerText": "© PARA Creative Origin — Packaging & Branding Studio",
+      "contactEmail": "hello@para.studio",
+      "_id": "32622dc26b15dce07c5afa15",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    }
+  ],
+  "pages": [
+    {
+      "slug": "about",
+      "title": "About PARA",
+      "lead": "Packaging & branding studio crafting memorable product identities.",
+      "body": "<p>PARA Creative Origin is a packaging and branding studio focused on tactile design, clear storytelling, and production-ready systems.</p><p>We partner with founders and brands to shape product lines that feel intentional on shelf and online.</p>",
+      "_id": "f1a00acceabf1f5b8e6e5fb6",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    },
+    {
+      "slug": "contact",
+      "title": "Contact us",
+      "lead": "Tell us about your product, launch, or rebrand.",
+      "body": "<p>Share a short brief and we will get back to you.</p>",
+      "ctaText": "Send message",
+      "_id": "7e99e6a2c828f62486f2e2ac",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Packaging",
+      "slug": "packaging",
+      "order": 1,
+      "_id": "81ed65882a697469dcfe5271",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    },
+    {
+      "name": "Branding",
+      "slug": "branding",
+      "order": 2,
+      "_id": "1cc988daa9760c302a8affd3",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    },
+    {
+      "name": "Identity",
+      "slug": "identity",
+      "order": 3,
+      "_id": "fd3e21ee1b2cfa1b458db909",
+      "createdAt": "2026-10-14T13:26:56.390Z",
+      "updatedAt": "2026-10-14T13:26:56.390Z"
+    }
+  ],
+  "projects": []
+}
