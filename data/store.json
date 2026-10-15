@@ -2,10 +2,10 @@
   "admins": [
     {
       "email": "admin@para.studio",
-      "passwordHash": "$2b$10$w96ddj1KNB4XbTrExX9a5OHnk2KzSt0texufm1BJl1j13iubx0q1O",
+      "passwordHash": "$2b$10$LhlMY.GhC1VUxuAzlX6YyOlZ5Qo35iJDUSq1.79zgVF6/lk8or5/i",
       "_id": "b2dbcb4d2c5a25e3a851a596",
       "createdAt": "2026-10-14T13:26:56.388Z",
-      "updatedAt": "2026-10-14T20:15:50.492Z"
+      "updatedAt": "2026-10-15T05:46:41.461Z"
     }
   ],
   "settings": [
